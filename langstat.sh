@@ -24,6 +24,10 @@ if [ $1 != "" ] && [ -ef "$1" ]
 then
 	echo "Analyse statistique en cours sur le fichier $1 ..."
 	sleep 5
+	for mot in $contentFile
+	do
+		echo -e "$mot\n"	# Commande de test, à remplacer par les commandes répondant au projet
+	done
 else
 	echo "Veuillez indiquer au moins un argument valide, soit un fichier existant."
 fi
