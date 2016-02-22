@@ -15,12 +15,15 @@
 ##################################################################################
 #
 #### Variables ####
-
+contentFile=`cat $1`
+oldIFS=$IFS
+IFS=$'\n'
 ###################
 #
 if [ $1 != "" ] && [ -ef "$1" ]
 then
-	echo "Analyse statistique en cours sur le fichier $1"
+	echo "Analyse statistique en cours sur le fichier $1 ..."
+	sleep 5
 else
 	echo "Veuillez indiquer au moins un argument valide, soit un fichier existant."
 fi
