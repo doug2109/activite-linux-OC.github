@@ -27,7 +27,11 @@ then
 	sleep 5
 	for ligne in $(<$filePath)
 	do
-		echo $ligne	# Commande de test, à remplacer par les commandes répondant au projet
+		for lettre in $ligne
+		do
+			case
+			esac
+		done
 	done
 else
 	echo "Veuillez indiquer au moins un argument valide, soit un fichier existant."
