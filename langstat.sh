@@ -49,14 +49,13 @@ tempCountFile="count.txt.tmp"
 if [ $1 != "" ] && [ -e $filePath ]
 then
 	echo "Analyse statistique en cours sur le fichier $filePath ..."
-	for ligne in $(<$filePath)
+	for ligne in $(<$filePath)	#Parcourt chaque ligne du dico
 	do
-		IFS=$''
-		for lettre in $ligne
-		do
-			case $lettre in
+		for lettre in $ligne	#Parcourt chaque lettre de chaque ligne
+		do			#Cependant il faut modifier IFS ici alors que c'est une variable globale !!!
+			case $lettre in	#Teste sur la lettre (=A ou =B, etc)
 				"A")
-					let "a = $a + 1"
+					let "a = $a + 1" #Incrémente le conteur
 					;;
 				"B")
 					let "b = $b + 1"
@@ -135,12 +134,11 @@ then
 					;;
 			esac
 		done
-		IFS=$'\n'
 	done
 #### boucle de test à remplacer par les actions d'affichage sous le format demandé
 	for var in "$a" "$b" "$c" "$d" "$e" "$f" "$g" "$h" "$i" "$j" "$k" "$l" "$m" "$n" "$o" "$p" "$q" "$r" "$s" "$t" "$u" "$v" "$w" "$x" "$y" "$z"
 	do
-		echo -e "$var\n"
+		echo "$var"
 	done
 else
 	echo "Veuillez indiquer au moins un argument valide, soit un fichier existant."
