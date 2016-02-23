@@ -55,7 +55,7 @@ then
 		IFS=$''
 		for lettre in $ligne
 		do
-			case lettre in
+			case $lettre in
 				"A")
 					let "a = $a + 1"
 					;;
