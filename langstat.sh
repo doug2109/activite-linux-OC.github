@@ -15,18 +15,19 @@
 ##################################################################################
 #
 #### Variables ####
-contentFile=`cat $1`
+#contentFile="cat $1"
 oldIFS=$IFS
 IFS=$'\n'
+filePath=$1
 ###################
 #
-if [ $1 != "" ] && [ -ef "$1" ]
+if [ $1 != "" ] && [ -e $filePath ]
 then
-	echo "Analyse statistique en cours sur le fichier $1 ..."
+	echo "Analyse statistique en cours sur le fichier $filePath ..."
 	sleep 5
-	for mot in $contentFile
+	for ligne in $(<$filePath)
 	do
-		echo -e "$mot\n"	# Commande de test, à remplacer par les commandes répondant au projet
+		echo $ligne	# Commande de test, à remplacer par les commandes répondant au projet
 	done
 else
 	echo "Veuillez indiquer au moins un argument valide, soit un fichier existant."
