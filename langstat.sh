@@ -138,6 +138,11 @@ then
 		done
 		IFS=$'\n'
 	done
+#### boucle de test à remplacer par les actions d'affichage sous le format demandé
+	for var in "$a" "$b" "$c" "$d" "$e" "$f" "$g" "$h" "$i" "$j" "$k" "$l" "$m" "$n" "$o" "$p" "$q" "$r" "$s" "$t" "$u" "$v" "$w" "$x" "$y" "$z"
+	do
+		echo -e "$var\n"
+	done
 else
 	echo "Veuillez indiquer au moins un argument valide, soit un fichier existant."
 fi
