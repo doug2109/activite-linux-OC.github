@@ -49,7 +49,6 @@ tempCountFile="count.txt.tmp"
 if [ $1 != "" ] && [ -e $filePath ]
 then
 	echo "Analyse statistique en cours sur le fichier $filePath ..."
-	sleep 5
 	for ligne in $(<$filePath)
 	do
 		IFS=$''
