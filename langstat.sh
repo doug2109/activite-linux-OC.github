@@ -11,39 +11,38 @@
 ####
 # Auteur: Édouard LUMET <edouard[_AT_]echodelta[_DOT_]fr>
 # Powered by: OpenClassrooms <https://openclassrooms.fr>
-# Version: 0.1-alpha
+# Version: 0.5-alpha
 ##################################################################################
 #
 #### Variables ####
 IFS=$'\n'
 filePath=$1
-let "a = 0"
-let "b = 0"
-let "c = 0"
-let "d = 0"
-let "e = 0"
-let "f = 0"
-let "g = 0"
-let "h = 0"
-let "i = 0"
-let "j = 0"
-let "k = 0"
-let "l = 0"
-let "m = 0"
-let "n = 0"
-let "o = 0"
-let "p = 0"
-let "q = 0"
-let "r = 0"
-let "s = 0"
-let "t = 0"
-let "u = 0"
-let "v = 0"
-let "w = 0"
-let "x = 0"
-let "y = 0"
-let "z = 0"
-tempCountFile="count.txt.tmp"
+a=0
+b=0
+c=0
+d=0
+e=0
+f=0
+g=0
+h=0
+i=0
+j=0
+k=0
+l=0
+m=0
+n=0
+o=0
+p=0
+q=0
+r=0
+s=0
+t=0
+u=0
+v=0
+w=0
+x=0
+y=0
+z=0
 ###################
 #
 if [ $1 != "" ] && [ -e $filePath ]
@@ -51,9 +50,11 @@ then
 	echo "Analyse statistique en cours sur le fichier $filePath ..."
 	for ligne in $(<$filePath)	#Parcourt chaque ligne du dico
 	do
-		for lettre in $ligne	#Parcourt chaque lettre de chaque ligne
-		do			#Cependant il faut modifier IFS ici alors que c'est une variable globale !!!
-			case $lettre in	#Teste sur la lettre (=A ou =B, etc)
+		tailleLigne=`expr length $ligne`
+		var=0
+		while [ $var -lt $tailleLigne ]	#Parcourt chaque lettre de chaque ligne
+		do
+			case "${ligne:$var:1}" in	#Teste sur la lettre (=A ou =B ou etc)
 				"A")
 					let "a = $a + 1" #Incrémente le conteur
 					;;
@@ -133,13 +134,12 @@ then
 					let "z = $z + 1"
 					;;
 			esac
+			let "var = $var + 1"
 		done
 	done
-#### boucle de test à remplacer par les actions d'affichage sous le format demandé
-	for var in "$a" "$b" "$c" "$d" "$e" "$f" "$g" "$h" "$i" "$j" "$k" "$l" "$m" "$n" "$o" "$p" "$q" "$r" "$s" "$t" "$u" "$v" "$w" "$x" "$y" "$z"
-	do
-		echo "$var"
-	done
+	echo "$a -- A"
+	echo "$b -- B"
+	echo "$c -- C"
 else
 	echo "Veuillez indiquer au moins un argument valide, soit un fichier existant."
 fi
