@@ -11,7 +11,7 @@
 ####
 # Auteur: Édouard LUMET <edouard[_AT_]echodelta[_DOT_]fr>
 # Powered by: OpenClassrooms <https://openclassrooms.fr>
-# Version: 0.7-alpha
+# Version: 0.9-alpha
 ##################################################################################
 #
 #### Variables ####
@@ -139,37 +139,37 @@ then
 		done
 	done
 	# Ajout des statisqtiques à un fichier temporaire
-	echo -e "$a -- A\n" >> $tempCountFile
-	echo -e "$b -- B\n" >> $tempCountFile
-	echo -e "$c -- C\n" >> $tempCountFile
-	echo -e "$d -- D\n" >> $tempCountFile
-	echo -e "$e -- E\n" >> $tempCountFile
-	echo -e "$f -- F\n" >> $tempCountFile
-	echo -e "$g -- G\n" >> $tempCountFile
-	echo -e "$h -- H\n" >> $tempCountFile
-	echo -e "$i -- I\n" >> $tempCountFile
-	echo -e "$j -- J\n" >> $tempCountFile
-	echo -e "$k -- K\n" >> $tempCountFile
-	echo -e "$l -- L\n" >> $tempCountFile
-	echo -e "$m -- M\n" >> $tempCountFile
-	echo -e "$n -- N\n" >> $tempCountFile
-	echo -e "$o -- O\n" >> $tempCountFile
-	echo -e "$p -- P\n" >> $tempCountFile
-	echo -e "$q -- Q\n" >> $tempCountFile
-	echo -e "$r -- R\n" >> $tempCountFile
-	echo -e "$s -- S\n" >> $tempCountFile
-	echo -e "$t -- T\n" >> $tempCountFile
-	echo -e "$u -- U\n" >> $tempCountFile
-	echo -e "$v -- V\n" >> $tempCountFile
-	echo -e "$w -- W\n" >> $tempCountFile
-	echo -e "$x -- X\n" >> $tempCountFile
-	echo -e "$y -- Y\n" >> $tempCountFile
-	echo "$z -- Z" >> $tempCountFile
+	echo "$a -- A" >> $tempCountFile
+	echo -e "\n$b -- B" >> $tempCountFile
+	echo -e "\n$c -- C" >> $tempCountFile
+	echo -e "\n$d -- D" >> $tempCountFile
+	echo -e "\n$e -- E" >> $tempCountFile
+	echo -e "\n$f -- F" >> $tempCountFile
+	echo -e "\n$g -- G" >> $tempCountFile
+	echo -e "\n$h -- H" >> $tempCountFile
+	echo -e "\n$i -- I" >> $tempCountFile
+	echo -e "\n$j -- J" >> $tempCountFile
+	echo -e "\n$k -- K" >> $tempCountFile
+	echo -e "\n$l -- L" >> $tempCountFile
+	echo -e "\n$m -- M" >> $tempCountFile
+	echo -e "\n$n -- N" >> $tempCountFile
+	echo -e "\n$o -- O" >> $tempCountFile
+	echo -e "\n$p -- P" >> $tempCountFile
+	echo -e "\n$q -- Q" >> $tempCountFile
+	echo -e "\n$r -- R" >> $tempCountFile
+	echo -e "\n$s -- S" >> $tempCountFile
+	echo -e "\n$t -- T" >> $tempCountFile
+	echo -e "\n$u -- U" >> $tempCountFile
+	echo -e "\n$v -- V" >> $tempCountFile
+	echo -e "\n$w -- W" >> $tempCountFile
+	echo -e "\n$x -- X" >> $tempCountFile
+	echo -e "\n$y -- Y" >> $tempCountFile
+	echo -e "\n$z -- Z" >> $tempCountFile
 	# Traitement du fichier temporaire et affichage
 	echo "Les statiqtiques sur $filePath sont :"
-	echo `sort -n $tempCountFile`
-	#echo $tempCountFile
-	rm $tempCountFile
+	sort -rn $tempCountFile
+	echo $tempCountFile
+rm $tempCountFile
 else
 	echo "Veuillez indiquer au moins un argument valide, soit un fichier existant."
 fi
