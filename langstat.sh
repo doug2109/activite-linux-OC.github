@@ -43,6 +43,7 @@ w=0
 x=0
 y=0
 z=0
+tempCountFile="count.temp"
 ###################
 #
 if [ $1 != "" ] && [ -e $filePath ]
@@ -137,9 +138,38 @@ then
 			let "var = $var + 1"
 		done
 	done
-	echo "$a -- A"
-	echo "$b -- B"
-	echo "$c -- C"
+	# Ajout des statisqtiques à un fichier temporaire
+	echo "$a -- A" >> $tempCountFile
+	echo "$b -- B" >> $tempCountFile
+	echo "$c -- C" >> $tempCountFile
+	echo "$d -- D" >> $tempCountFile
+	echo "$e -- E" >> $tempCountFile
+	echo "$f -- F" >> $tempCountFile
+	echo "$g -- G" >> $tempCountFile
+	echo "$h -- H" >> $tempCountFile
+	echo "$i -- I" >> $tempCountFile
+	echo "$j -- J" >> $tempCountFile
+	echo "$k -- K" >> $tempCountFile
+	echo "$l -- L" >> $tempCountFile
+	echo "$m -- M" >> $tempCountFile
+	echo "$n -- N" >> $tempCountFile
+	echo "$o -- O" >> $tempCountFile
+	echo "$p -- P" >> $tempCountFile
+	echo "$q -- Q" >> $tempCountFile
+	echo "$r -- R" >> $tempCountFile
+	echo "$s -- S" >> $tempCountFile
+	echo "$t -- T" >> $tempCountFile
+	echo "$u -- U" >> $tempCountFile
+	echo "$v -- V" >> $tempCountFile
+	echo "$w -- W" >> $tempCountFile
+	echo "$x -- X" >> $tempCountFile
+	echo "$y -- Y" >> $tempCountFile
+	echo "$z -- Z" >> $tempCountFile
+	# Traitement du fichier temporaire et affichage
+	echo "Les statiqtiques sur $filePath sont :"
+	echo `sort -n $tempCountFile`
+	#echo $tempCountFile
+	rm $tempCountFile
 else
 	echo "Veuillez indiquer au moins un argument valide, soit un fichier existant."
 fi
