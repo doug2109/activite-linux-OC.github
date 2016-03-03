@@ -139,31 +139,31 @@ then
 		done
 	done
 	# Ajout des statisqtiques à un fichier temporaire
-	echo "$a -- A\n" >> $tempCountFile
-	echo "$b -- B\n" >> $tempCountFile
-	echo "$c -- C\n" >> $tempCountFile
-	echo "$d -- D\n" >> $tempCountFile
-	echo "$e -- E\n" >> $tempCountFile
-	echo "$f -- F\n" >> $tempCountFile
-	echo "$g -- G\n" >> $tempCountFile
-	echo "$h -- H\n" >> $tempCountFile
-	echo "$i -- I\n" >> $tempCountFile
-	echo "$j -- J\n" >> $tempCountFile
-	echo "$k -- K\n" >> $tempCountFile
-	echo "$l -- L\n" >> $tempCountFile
-	echo "$m -- M\n" >> $tempCountFile
-	echo "$n -- N\n" >> $tempCountFile
-	echo "$o -- O\n" >> $tempCountFile
-	echo "$p -- P\n" >> $tempCountFile
-	echo "$q -- Q\n" >> $tempCountFile
-	echo "$r -- R\n" >> $tempCountFile
-	echo "$s -- S\n" >> $tempCountFile
-	echo "$t -- T\n" >> $tempCountFile
-	echo "$u -- U\n" >> $tempCountFile
-	echo "$v -- V\n" >> $tempCountFile
-	echo "$w -- W\n" >> $tempCountFile
-	echo "$x -- X\n" >> $tempCountFile
-	echo "$y -- Y\n" >> $tempCountFile
+	echo -e "$a -- A\n" >> $tempCountFile
+	echo -e "$b -- B\n" >> $tempCountFile
+	echo -e "$c -- C\n" >> $tempCountFile
+	echo -e "$d -- D\n" >> $tempCountFile
+	echo -e "$e -- E\n" >> $tempCountFile
+	echo -e "$f -- F\n" >> $tempCountFile
+	echo -e "$g -- G\n" >> $tempCountFile
+	echo -e "$h -- H\n" >> $tempCountFile
+	echo -e "$i -- I\n" >> $tempCountFile
+	echo -e "$j -- J\n" >> $tempCountFile
+	echo -e "$k -- K\n" >> $tempCountFile
+	echo -e "$l -- L\n" >> $tempCountFile
+	echo -e "$m -- M\n" >> $tempCountFile
+	echo -e "$n -- N\n" >> $tempCountFile
+	echo -e "$o -- O\n" >> $tempCountFile
+	echo -e "$p -- P\n" >> $tempCountFile
+	echo -e "$q -- Q\n" >> $tempCountFile
+	echo -e "$r -- R\n" >> $tempCountFile
+	echo -e "$s -- S\n" >> $tempCountFile
+	echo -e "$t -- T\n" >> $tempCountFile
+	echo -e "$u -- U\n" >> $tempCountFile
+	echo -e "$v -- V\n" >> $tempCountFile
+	echo -e "$w -- W\n" >> $tempCountFile
+	echo -e "$x -- X\n" >> $tempCountFile
+	echo -e "$y -- Y\n" >> $tempCountFile
 	echo "$z -- Z" >> $tempCountFile
 	# Traitement du fichier temporaire et affichage
 	echo "Les statiqtiques sur $filePath sont :"
