@@ -7,11 +7,11 @@
 # On fournit en premier argument un dictionnaire de langue et en deuxième argument un nombre définissant la taille des mots à traiter.
 ####
 # 1. Le script parcourt le dictionnaire et indique le nombre d'occurences de chaque lettre dans l'ordre décroissant d'utilisation.
-# 2. Lorsque le deuxième argument est présent et est valide (nombre réel compris entre 0 et la taille du mot le plus long), le script effectue l'action indiquée précédemment (§1) seulement sur les mots de la taille indiquée.
+# 2. Lorsque le deuxième argument est présent, le script indique le nombre de mots de longueur supérieure au nombre indiqué en argument2 puis les affiche.
 ####
 # Auteur: Édouard LUMET <edouard[_AT_]echodelta[_DOT_]fr>
 # Powered by: OpenClassrooms <https://openclassrooms.fr>
-# Version: 0.9-alpha
+# Version: 2.0
 ##################################################################################
 #
 #### Variables ####
@@ -43,21 +43,31 @@ w=0
 x=0
 y=0
 z=0
-tempCountFile="count.temp"
+motsLongs=0
+tempCountFile="STATISTIQUES"
+tempLengthFile="STATISTIQUES2"
 ###################
 #
-if [ $1 != "" ] && [ -e $filePath ]
+if [ $1 != "" ] && [ -e $filePath ] #Teste l'existence du premier paramètre ET du fichier donné en premier paramètre
 then
-	echo "Analyse statistique en cours sur le fichier $filePath ..."
+	echo -e "\nAnalyse statistique en cours sur le fichier $filePath ..."
 	for ligne in $(<$filePath)	#Parcourt chaque ligne du dico
 	do
-		tailleLigne=`expr length $ligne`
+		tailleLigne=`expr length $ligne` #Stocke dans une variable la taille de la ligne en cours
+		if [ $2 != "" ] #Teste si l'argument2 est présent pour traitement de la seconde fonctionnalité
+		then
+			if [ $tailleLigne -gt $2 ] #Teste si le mot actuel à une longueur supérieure à l'argument2
+			then
+				let "motsLongs = $motsLongs + 1" #Incrémente le conteur de mots de taille supérieure à arg2
+				echo "$ligne" >> $tempLengthFile #Stocke alors le mot dans un fichier temporaire
+			fi
+		fi
 		var=0
-		while [ $var -lt $tailleLigne ]	#Parcourt chaque lettre de chaque ligne
+		while [ $var -lt $tailleLigne ]	#Parcourt chaque lettre de chaque ligne (jusqu'à la taille de la ligne)
 		do
 			case "${ligne:$var:1}" in	#Teste sur la lettre (=A ou =B ou etc)
 				"A")
-					let "a = $a + 1" #Incrémente le conteur
+					let "a = $a + 1" #Incrémente le conteur pour la lettre correspondante
 					;;
 				"B")
 					let "b = $b + 1"
@@ -140,36 +150,43 @@ then
 	done
 	# Ajout des statisqtiques à un fichier temporaire
 	echo "$a -- A" >> $tempCountFile
-	echo -e "\n$b -- B" >> $tempCountFile
-	echo -e "\n$c -- C" >> $tempCountFile
-	echo -e "\n$d -- D" >> $tempCountFile
-	echo -e "\n$e -- E" >> $tempCountFile
-	echo -e "\n$f -- F" >> $tempCountFile
-	echo -e "\n$g -- G" >> $tempCountFile
-	echo -e "\n$h -- H" >> $tempCountFile
-	echo -e "\n$i -- I" >> $tempCountFile
-	echo -e "\n$j -- J" >> $tempCountFile
-	echo -e "\n$k -- K" >> $tempCountFile
-	echo -e "\n$l -- L" >> $tempCountFile
-	echo -e "\n$m -- M" >> $tempCountFile
-	echo -e "\n$n -- N" >> $tempCountFile
-	echo -e "\n$o -- O" >> $tempCountFile
-	echo -e "\n$p -- P" >> $tempCountFile
-	echo -e "\n$q -- Q" >> $tempCountFile
-	echo -e "\n$r -- R" >> $tempCountFile
-	echo -e "\n$s -- S" >> $tempCountFile
-	echo -e "\n$t -- T" >> $tempCountFile
-	echo -e "\n$u -- U" >> $tempCountFile
-	echo -e "\n$v -- V" >> $tempCountFile
-	echo -e "\n$w -- W" >> $tempCountFile
-	echo -e "\n$x -- X" >> $tempCountFile
-	echo -e "\n$y -- Y" >> $tempCountFile
-	echo -e "\n$z -- Z" >> $tempCountFile
+	echo "$b -- B" >> $tempCountFile
+	echo "$c -- C" >> $tempCountFile
+	echo "$d -- D" >> $tempCountFile
+	echo "$e -- E" >> $tempCountFile
+	echo "$f -- F" >> $tempCountFile
+	echo "$g -- G" >> $tempCountFile
+	echo "$h -- H" >> $tempCountFile
+	echo "$i -- I" >> $tempCountFile
+	echo "$j -- J" >> $tempCountFile
+	echo "$k -- K" >> $tempCountFile
+	echo "$l -- L" >> $tempCountFile
+	echo "$m -- M" >> $tempCountFile
+	echo "$n -- N" >> $tempCountFile
+	echo "$o -- O" >> $tempCountFile
+	echo "$p -- P" >> $tempCountFile
+	echo "$q -- Q" >> $tempCountFile
+	echo "$r -- R" >> $tempCountFile
+	echo "$s -- S" >> $tempCountFile
+	echo "$t -- T" >> $tempCountFile
+	echo "$u -- U" >> $tempCountFile
+	echo "$v -- V" >> $tempCountFile
+	echo "$w -- W" >> $tempCountFile
+	echo "$x -- X" >> $tempCountFile
+	echo "$y -- Y" >> $tempCountFile
+	echo "$z -- Z" >> $tempCountFile
 	# Traitement du fichier temporaire et affichage
-	echo "Les statiqtiques sur $filePath sont :"
-	sort -rn $tempCountFile
-	echo $tempCountFile
-rm $tempCountFile
+	echo -e "\nLes statiqtiques sur $filePath sont :\n"
+	sort -rn $tempCountFile #Tri du fichier temporaire par ordre décroissant d'occurences
+	echo -e "$tempCountFile\n" #Affichage du contenu du fichier temporaire trié (stats)
+	rm $tempCountFile #Suppression du fichier temporaire
+	if [ $2 != "" ] #Teste si l'argument2 est présent pour affichage des stats d'argument2
+	then
+		echo -e "\nLes mots de plus de $2 lettres sont les suivants (au nombre de $motsLongs) :\n"
+		sort $tempLengthFile
+		echo -e "$tempLengthFile\n" #Affichage des mots de plus de x lettres (arg2)
+		rm $tempLengthFile #Suppression du fichier temporaire
+	fi
 else
-	echo "Veuillez indiquer au moins un argument valide, soit un fichier existant."
+	echo "Veuillez indiquer au moins un argument valide, soit un fichier existant." #Affichage si argument1 manquant ou fichier inexistant
 fi
